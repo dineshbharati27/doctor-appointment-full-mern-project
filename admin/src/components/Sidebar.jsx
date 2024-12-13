@@ -1,18 +1,18 @@
-import React, { useContext } from 'react'
-import { assets } from '../assets/assets'
-import { NavLink } from 'react-router-dom'
-import { DoctorContext } from '../context/DoctorContext'
-import { AdminContext } from '../context/AdminContext'
+import React, { useContext } from 'react' // Import necessary modules from React
+import { assets } from '../assets/assets' // Import assets (e.g., icons)
+import { NavLink } from 'react-router-dom' // Import NavLink for navigation links
+import { DoctorContext } from '../context/DoctorContext' // Import DoctorContext to access doctor-specific state
+import { AdminContext } from '../context/AdminContext' // Import AdminContext to access admin-specific state
 
 const Sidebar = () => {
 
-  const { dToken } = useContext(DoctorContext)
-  const { aToken } = useContext(AdminContext)
+  const { dToken } = useContext(DoctorContext) // Access doctor token from context
+  const { aToken } = useContext(AdminContext) // Access admin token from context
 
   return (
     <div className='min-h-screen bg-white border-r'>
       {aToken && <ul className='text-[#515151] mt-5'>
-
+        {/* Sidebar options for Admin */}
         <NavLink to={'/admin-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
           <img className='min-w-5' src={assets.home_icon} alt='' />
           <p className='hidden md:block'>Dashboard</p>
@@ -32,6 +32,7 @@ const Sidebar = () => {
       </ul>}
 
       {dToken && <ul className='text-[#515151] mt-5'>
+        {/* Sidebar options for Doctor */}
         <NavLink to={'/doctor-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
           <img className='min-w-5' src={assets.home_icon} alt='' />
           <p className='hidden md:block'>Dashboard</p>
